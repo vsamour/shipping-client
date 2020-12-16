@@ -12,6 +12,9 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "es2018",
       "dom"
@@ -30,5 +33,10 @@
         "src/app/*"
       ]
     }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "skipLibCheck": true
   }
 }
