@@ -1,7 +1,8 @@
 import {Location} from '@angular/common';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {IShipment, ShipmentData} from '@core/data';
+import {ShipmentData} from '@core/data';
+import {IShipmentInput} from '@core/data/shipment';
 
 @Component({
   selector: 'app-shipment-edit-page',
@@ -25,7 +26,7 @@ export class ShipmentEditPageComponent implements OnInit {
     this._location.back();
   }
 
-  create(data: IShipment) {
+  create(data: IShipmentInput) {
     this._shipment.createOne(data);
   }
 }
