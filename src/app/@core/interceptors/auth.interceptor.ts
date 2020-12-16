@@ -1,11 +1,12 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {AuthData} from '../data';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {
+  constructor(private _auth: AuthData) {
   }
 
   intercept(
@@ -18,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError(err => {
         if (err.status === 401) {
-          // this.auth.logout();
+          this._auth.logout();
         }
 
         const error = err.error.message || err.statusText;
