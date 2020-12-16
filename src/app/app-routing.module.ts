@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AuthGuard} from '@core/guards';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   {
     path: 'shipment',
     pathMatch: 'prefix',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./shipment/shipment.module').then(m => m.ShipmentModule)
   },
   {
@@ -23,4 +25,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
