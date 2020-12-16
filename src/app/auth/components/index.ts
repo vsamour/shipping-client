@@ -1,5 +1,5 @@
 import {LoginFormComponent} from './login-form/login-form.component';
 
-export const COMPONETS = [
+export const COMPONENTS = [
   LoginFormComponent
 ];
