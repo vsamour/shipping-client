@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ShipmentListPageComponent} from './pages';
+import {ShipmentEditPageComponent, ShipmentListPageComponent} from './pages';
 
 const routes: Routes = [
   {
@@ -12,6 +12,11 @@ const routes: Routes = [
     path: 'list',
     pathMatch: 'prefix',
     component: ShipmentListPageComponent
+  },
+  {
+    path: 'create',
+    pathMatch: 'prefix',
+    component: ShipmentEditPageComponent
   }
 ];
 
