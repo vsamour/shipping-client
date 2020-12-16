@@ -1,0 +1,10 @@
+<div class="shipment-list-item--container">
+  <span class="shipment-list-item--id"><a routerLink="../detail/{{shipment.id}}">#{{shipment.id}}</a></span>
+  <span class="shipment-list-item--name">{{shipment.name}}</span>
+  <div class="shipment-list-item--actions">
+    <a routerLink="../detail/{{shipment.id}}" class="btn">open</a>
+    <a routerLink="../edit/{{shipment.id}}" class="btn">edit</a>
+    <button (click)="delete.emit(shipment.id)" class="btn">delete</button>
+    <button (click)="send.emit(shipment.id)" class="btn"> send</button>
+  </div>
+</div>

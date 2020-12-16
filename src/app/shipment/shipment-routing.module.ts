@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ShipmentEditPageComponent, ShipmentListPageComponent} from './pages';
+import {ShipmentDetailPageComponent, ShipmentEditPageComponent, ShipmentListPageComponent} from './pages';
 
 const routes: Routes = [
   {
@@ -17,7 +17,18 @@ const routes: Routes = [
     path: 'create',
     pathMatch: 'prefix',
     component: ShipmentEditPageComponent
-  }
+  },
+  {
+    path: 'detail/:id',
+    pathMatch: 'prefix',
+    component: ShipmentDetailPageComponent
+  },
+  {
+    path: 'edit/:id',
+    pathMatch: 'prefix',
+    component: ShipmentEditPageComponent
+  },
+
 ];
 
 @NgModule({
