@@ -8,7 +8,7 @@ export interface IShipment {
 
 export abstract class ShipmentData {
   // Get list user's shipments
-  abstract getAll();
+  abstract getAll(): Promise<any>;
 
   // Create new shipment
   abstract createOne(data: IShipment);

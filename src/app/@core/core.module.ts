@@ -1,11 +1,12 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AuthData} from '@core/data';
-import {AuthService} from '@core/services';
+import {AuthData, ShipmentData} from '@core/data';
+import {AuthService, ShipmentService} from '@core/services';
 import {throwIfAlreadyLoaded} from './module-import-guard';
 
 const DATA_SERVICES = [
-  {provide: AuthData, useClass: AuthService}
+  {provide: AuthData, useClass: AuthService},
+  {provide: ShipmentData, useClass: ShipmentService},
 ];
 
 const CORE_PROVIDERS = [
