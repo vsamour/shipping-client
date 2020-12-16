@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {environment} from '@env/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {AuthData, ILoginCredentials, ILoginResponse, IUser} from '../data';
@@ -12,44 +13,46 @@ export class AuthService extends AuthData {
   constructor(private _http: HttpClient) {
     super();
 
-    this._userSubject = new BehaviorSubject<IUser>(AuthService._fromLS() || null);
+    this._userSubject = new BehaviorSubject<IUser>(AuthService._fromLS('user') || null);
     this.user$ = this._userSubject.asObservable();
 
   }
 
-  private static _toLS(user: IUser) {
-    localStorage.setItem('user', JSON.stringify(user));
+  private static _toLS(key: string, data: any) {
+    localStorage.setItem(key, JSON.stringify(data));
   }
 
-  private static _fromLS() {
-    return JSON.parse(localStorage.getItem('user'));
+  private static _delFromLS(key: string) {
+    localStorage.removeItem(key);
+  }
+
+  private static _fromLS(key: string) {
+    return JSON.parse(localStorage.getItem(key));
   }
 
   async login(credential: ILoginCredentials): Promise<IUser> {
-    let result = await this._http.post<ILoginResponse>('', {
+    let result = await this._http.post<ILoginResponse>(`${environment.url}/login`, {
       email: credential.email,
       password: credential.password
     }).pipe(
       map(
-        (value => {
-
-          //should be validation here
-
+        (({data: [{token}]}) => {
           let user: IUser = {
-            email: credential.password
+            email: credential.email
           };
-
           this._userSubject.next(user);
-          AuthService._toLS(user);
+          AuthService._toLS('token', token);
+          AuthService._toLS('user', user);
           return user;
         })
-      )
+      ),
     ).toPromise();
     return result;
   }
 
   logout(): void {
     this._userSubject.next(null);
-    AuthService._toLS(null);
+    AuthService._delFromLS('user');
+    AuthService._delFromLS('token')
   }
 }
