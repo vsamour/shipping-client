@@ -1,0 +1,17 @@
+<div class="login-container">
+  <div class="login-container__form form-container">
+    <form [formGroup]="loginForm" (ngSubmit)="authenticate(loginForm.getRawValue())">
+      <div class="form-group">
+        <label>Email</label>
+        <input name="email" type="text" formControlName="email" placeholder="Enter Email" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input name="password" type="password" formControlName="password" placeholder="Enter password" class="form-input">
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn--green">Войти</button>
+      </div>
+    </form>
+  </div>
+</div>
