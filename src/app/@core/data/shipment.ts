@@ -17,7 +17,7 @@ export abstract class ShipmentData {
   abstract getOne(id: number);
 
   // Update shipment
-  abstract updateOne(id: number)
+  abstract updateOne(data: IShipment)
 
   // Delete shipment
   abstract deleteOne(id: number);
