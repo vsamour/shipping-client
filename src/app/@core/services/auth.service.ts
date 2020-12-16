@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {environment} from '@env/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {AuthData, ILoginCredentials, ILoginResponse, IUser} from '../data';
 
 @Injectable()
@@ -46,6 +46,10 @@ export class AuthService extends AuthData {
           return user;
         })
       ),
+      catchError(error => {
+        this.logout();
+        throw error
+      })
     ).toPromise();
     return result;
   }
