@@ -2,12 +2,12 @@ import {Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter}
 import {IShipment} from '@core/data';
 
 @Component({
-  selector: 'app-shipment-list-item',
-  templateUrl: './shipment-list-item.component.html',
-  styleUrls: ['./shipment-list-item.component.scss'],
+  selector: 'app-shipment-detail',
+  templateUrl: './shipment-detail.component.html',
+  styleUrls: ['./shipment-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ShipmentListItemComponent implements OnInit {
+export class ShipmentDetailComponent implements OnInit {
   @Input() shipment: IShipment;
   @Output() delete: EventEmitter<string> = new EventEmitter<string>();
   @Output() send: EventEmitter<string> = new EventEmitter<string>();

@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {IShipment, ShipmentData} from '@core/data';
-import {IShipmentInput, IShipmentResponse} from '@core/data/shipment';
+import {IShipmentInput, IShipmentResponse, IShipmentsResponse} from '@core/data/shipment';
 import {environment} from '@env/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -27,13 +27,13 @@ export class ShipmentService extends ShipmentData {
     return result;
   }
 
-  async deleteOne(id: number) {
+  async deleteOne(id: string) {
     let result = await this._http.delete(`${this.endpoint}/${id}`).toPromise();
     return result;
   }
 
   async getAll() {
-    let result = await this._http.get<IShipmentResponse>(this.endpoint).pipe(
+    let result = await this._http.get<IShipmentsResponse>(this.endpoint).pipe(
       map(
         ({data: {shipments}}) => {
           this._dataSubject.next(shipments);
@@ -44,12 +44,18 @@ export class ShipmentService extends ShipmentData {
     return result;
   }
 
-  async getOne(id: number) {
-    let result = await this._http.get(`${this.endpoint}/${id}`).toPromise();
+  async getOne(id: string) {
+    let result = await this._http.get<IShipmentResponse>(`${this.endpoint}/${id}`).pipe(
+      map(
+        ({data}) => {
+          return data;
+        }
+      )
+    ).toPromise();
     return result;
   }
 
-  async send(id: number) {
+  async send(id: string) {
     let result = await this._http.post(`${this.endpoint}/${id}/send`, {
       id: id
     }).toPromise();

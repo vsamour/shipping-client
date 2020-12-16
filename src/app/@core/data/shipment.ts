@@ -2,7 +2,7 @@ import {Observable} from 'rxjs';
 
 export interface IShipmentInput {
   // Shipment id
-  id: number,
+  id: string,
 
   // Shipment name
   name: string
@@ -17,6 +17,10 @@ export interface IShipment extends IShipmentInput {
 }
 
 export interface IShipmentResponse {
+  data: IShipment
+}
+
+export interface IShipmentsResponse {
   data: {
     shipments: IShipment[]
   }
@@ -32,14 +36,14 @@ export abstract class ShipmentData {
   abstract createOne(data: IShipmentInput);
 
   // Get one shipment
-  abstract getOne(id: number);
+  abstract getOne(id: string);
 
   // Update shipment
   abstract updateOne(data: IShipmentInput)
 
   // Delete shipment
-  abstract deleteOne(id: number);
+  abstract deleteOne(id: string);
 
   // Send item's list from shipment
-  abstract send(id: number);
+  abstract send(id: string);
 }
