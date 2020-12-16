@@ -1,18 +1,25 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {IShipment, ShipmentData} from '@core/data';
+import {IShipmentInput, IShipmentResponse} from '@core/data/shipment';
 import {environment} from '@env/environment';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ShipmentService extends ShipmentData {
+  private _dataSubject: BehaviorSubject<IShipment[]>;
+  data$: Observable<IShipment[]>;
   endpoint: string;
 
   constructor(private _http: HttpClient) {
     super();
-    this.endpoint = `${environment.url}/shipment`
+    this.endpoint = `${environment.url}/shipment`;
+    this._dataSubject = new BehaviorSubject<IShipment[]>([]);
+    this.data$ = this._dataSubject.asObservable();
   }
 
-  async createOne(data: IShipment) {
+  async createOne(data: IShipmentInput) {
     let result = await this._http.post(this.endpoint, {
       id: data.id,
       name: data.name
@@ -26,7 +33,14 @@ export class ShipmentService extends ShipmentData {
   }
 
   async getAll() {
-    let result = await this._http.get(this.endpoint).toPromise();
+    let result = await this._http.get<IShipmentResponse>(this.endpoint).pipe(
+      map(
+        ({data: {shipments}}) => {
+          this._dataSubject.next(shipments);
+          return shipments;
+        }
+      )
+    ).toPromise();
     return result;
   }
 
@@ -42,7 +56,7 @@ export class ShipmentService extends ShipmentData {
     return result;
   }
 
-  async updateOne(data: IShipment) {
+  async updateOne(data: IShipmentInput) {
     let result = await this._http.put(`${this.endpoint}/${data.id}`, {
       id: data.id,
       name: data.name
