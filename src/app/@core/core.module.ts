@@ -1,13 +1,14 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {httpInterceptorProviders} from './interceptors';
-import {AuthData, ShipmentData} from './data';
-import {AuthService, ShipmentService} from './services';
+import {AuthData, ItemData, ShipmentData} from './data';
+import {AuthService, ItemService, ShipmentService} from './services';
 import {throwIfAlreadyLoaded} from './module-import-guard';
 
 const DATA_SERVICES = [
   {provide: AuthData, useClass: AuthService},
   {provide: ShipmentData, useClass: ShipmentService},
+  {provide: ItemData, useClass: ItemService},
   ...httpInterceptorProviders
 ];
 
