@@ -9,15 +9,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'shipment',
+    path: '',
     pathMatch: 'prefix',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./shipment/shipment.module').then(m => m.ShipmentModule)
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'shipment'
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   }
 ];
 
