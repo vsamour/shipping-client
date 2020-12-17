@@ -1,0 +1,23 @@
+<p>shipment-item-form works!</p>
+
+<form [formGroup]="form" (ngSubmit)="create.emit(form.getRawValue())">
+  <div class="form-group">
+    <label for="shipment-item-id">ID</label>
+    <input type="text" id="shipment-item-id" placeholder="id" formControlName="id">
+  </div>
+  <div class="form-group">
+    <label for="shipment-item-id">Shipment ID</label>
+    <input type="text" id="shipment-id" placeholder="shipment id" formControlName="shipment_id">
+  </div>
+  <div class="form-group">
+    <label for="shipment-item-id">Name</label>
+    <input type="text" id="shipment-item-name" placeholder="name" formControlName="name">
+  </div>
+  <div class="form-group">
+    <label for="shipment-item-id">Code</label>
+    <input type="text" id="shipment-item-code" placeholder="code" formControlName="code">
+  </div>
+  <div class="form-group">
+    <button type="submit">CREATE</button>
+  </div>
+</form>
