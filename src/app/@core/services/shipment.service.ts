@@ -1,7 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {IShipment, ShipmentData} from '@core/data';
-import {IShipmentInput, IShipmentResponse, IShipmentsResponse} from '@core/data/shipment';
+import {IShipment, IShipmentInput, IShipmentResponse, IShipmentsResponse, ShipmentData} from '@core/data';
 import {environment} from '@env/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';

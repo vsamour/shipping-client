@@ -1,5 +1,6 @@
 import {AuthData, IUser, ILoginCredentials, ILoginResponse} from './auth';
-import {ShipmentData, IShipment} from './shipment';
+import {ShipmentData, IShipmentInput, IShipmentResponse, IShipmentsResponse, IShipment} from './shipment';
+import {ItemData, IItem} from './item';
 
 export {
   // Auth
@@ -10,5 +11,12 @@ export {
 
   // Shipment
   IShipment,
-  ShipmentData
+  IShipmentInput,
+  IShipmentResponse,
+  IShipmentsResponse,
+  ShipmentData,
+
+  // Item
+  IItem,
+  ItemData
 }

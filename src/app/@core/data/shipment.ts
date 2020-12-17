@@ -1,3 +1,4 @@
+import {IItem} from './item';
 import {Observable} from 'rxjs';
 
 export interface IShipmentInput {
@@ -12,7 +13,7 @@ export interface IShipment extends IShipmentInput {
   created_at: string;
   updated_at: string;
   is_send: boolean;
-  items: any[];
+  items: IItem[];
   last_sended_at: string;
 }
 
