@@ -1,0 +1,12 @@
+<!--<header class="header-container">-->
+<!--  <app-header (logout)="logout()" [user]="user$ | async"></app-header>-->
+<!--</header>-->
+<div class="main-container--inner">
+  <div class="sidebar-container">
+    <app-sidebar [user]="user$ | async" (logout)="logout()"></app-sidebar>
+  </div>
+  <div class="content-container">
+    <ng-content></ng-content>
+  </div>
+</div>
+

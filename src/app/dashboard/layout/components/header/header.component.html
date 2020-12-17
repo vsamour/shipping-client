@@ -1,0 +1,8 @@
+<div class="user-container" *ngIf="user">
+  <fa-icon size="2x" [icon]="userIcon"></fa-icon>
+  <span class="user--name">{{user.email}}</span>
+  <button (click)="logout.emit()">
+    <fa-icon [icon]="signOutIcon"></fa-icon></button>
+  <div class="logout-container">
+  </div>
+</div>

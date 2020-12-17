@@ -1,0 +1,9 @@
+<div class="sidebar-container--inner">
+  <div class="sidebar-container--content">
+    <div class="sidebar-header--animation">
+      <ng-lottie [options]="animationOptions"></ng-lottie>
+    </div>
+    <div class="sidebar-header--logo"><span class="text">Shipment</span><span class="test">test</span></div>
+  </div>
+  <app-user-container (logout)="logout.emit()" [user]="user"></app-user-container>
+</div>

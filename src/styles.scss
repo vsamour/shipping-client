@@ -1,4 +1,124 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  margin: unset;
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Andika+New+Basic&family=Luckiest+Guy&family=Open+Sans:wght@400;700&family=Rubik&display=swap');
+
+:root {
+  --background-color: #edf0f4;
+  --primary-color: #2196f3;
+  --primary-light-color: #e0f5ff;
+
+  --sidebar-width: 15rem;
+  --sidebar-background-color: #fff;
+  --sidebar-shadow-color: rgba(0,0,0,0.2);
+  --sidebar-shadow: 0px 0px 4px 0px var(--sidebar-shadow-color);
+
+  --button-text-color: #222b45;
+  --button-color: black;
+  --button-background: #edf1f7;
+  --button-border-color: #edf1f7;
+  --button-border-width: .2rem;
+
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+  font-family:  'Open Sans', sans-serif;
+}
+
+.main-container {
+  background-color: var(--background-color);
+  width: 100%;
+  height: 100%;
+}
+
+.main-container--inner {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar-container {
+  display: flex;
+  min-width: var(--sidebar-width);
+  height: 100%;
+  background-color: var(--sidebar-background-color);
+  box-shadow: var(--sidebar-shadow);
+}
+.sidebar-container--inner {
+  height: 100%;
+  width: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.content-container {
+  padding: 1rem;
+  overflow: auto;
+}
+.sidebar-container--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar-header--animation {
+  height: 12rem;
+  width: 15rem;
+  z-index: 1;
+}
+.sidebar-header--logo {
+  display: flex;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.4rem;
+
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  color: #ffffff;
+  background: linear-gradient(45deg, #aee8de, #99d7ff);
+  transform: translateY(-105%) rotateZ(-5deg);
+  z-index: 0;
+
+  .test {
+    position: absolute;
+    right: 0rem;
+    top: 2rem;
+    font-size: 11px;
+    padding: .1rem .3rem;
+    border-radius: 0.2rem;
+    transform: rotateZ(5deg);
+    z-index: -1;
+    color: var(--danger);
+  }
+}
+
+@import "styles/buttons";
