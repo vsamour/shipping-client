@@ -1,7 +1,9 @@
 import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {IItem, ItemData} from '@core/data';
+import {IItemResponse} from '@core/data/item';
 import {environment} from '@env/environment';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ItemService extends ItemData{
@@ -27,7 +29,9 @@ export class ItemService extends ItemData{
   }
 
   async getOne(id: string) {
-    let result = await this._http.get(`${this.endpoint}/${id}`).toPromise();
+    let result = await this._http.get<IItemResponse>(`${this.endpoint}/${id}`).pipe(
+      map(({data}) => data)
+    ).toPromise();
     return result;
   }
 

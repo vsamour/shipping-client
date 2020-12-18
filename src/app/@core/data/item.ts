@@ -4,7 +4,9 @@ export interface IItem {
   name: string;
   code: string;
 }
-
+export interface IItemResponse {
+  data: IItem;
+}
 export abstract class ItemData {
   abstract getOne(id: string);
   abstract createOne(data: IItem);
