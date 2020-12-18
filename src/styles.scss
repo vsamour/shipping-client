@@ -79,7 +79,8 @@ html, body {
   box-sizing: border-box;
 }
 .content-container {
-  padding: 1rem;
+  width: 100%;
+  padding: 2rem;
   overflow: auto;
 }
 .sidebar-container--content {
@@ -121,4 +122,11 @@ html, body {
   }
 }
 
+
+.content-container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 @import "styles/buttons";
+@import "styles/shipments";

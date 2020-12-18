@@ -1,3 +1,12 @@
-<div *ngFor="let shipment of shipments">
-  <app-shipment-list-item [shipment]="shipment" ></app-shipment-list-item>
+<div class="shipment-list--grid">
+  <div class="shipment-list--title">
+    <div>ID</div>
+    <div>Name</div>
+    <div>Items</div>
+    <div>Created at</div>
+    <div>Updated at</div>
+    <div>Actions</div>
+  </div>
+  <app-shipment-list-item *ngFor="let shipment of shipments" [shipment]="shipment"
+                          class="shipment-list-item--container"></app-shipment-list-item>
 </div>

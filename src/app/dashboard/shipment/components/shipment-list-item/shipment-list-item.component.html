@@ -1,10 +1,15 @@
-<div class="shipment-list-item--container">
-  <span class="shipment-list-item--id"><a routerLink="../detail/{{shipment.id}}">#{{shipment.id}}</a></span>
-  <span class="shipment-list-item--name">{{shipment.name}}</span>
-  <div class="shipment-list-item--actions">
-    <a routerLink="../detail/{{shipment.id}}" class="btn">open</a>
-    <a routerLink="../edit/{{shipment.id}}" class="btn">edit</a>
-    <button (click)="delete.emit(shipment.id)" class="btn">delete</button>
-    <button (click)="send.emit(shipment.id)" class="btn"> send</button>
+<div class="shipment-list-item--id"><a class="btn" routerLink="../detail/{{shipment.id}}">#{{shipment.id}}</a></div>
+<div class="shipment-list-item--name">{{shipment.name}}</div>
+<div class="shipment-list-item--items">
+  <div>
+    <fa-icon [icon]="boxesIcon"></fa-icon>
+    {{shipment.items.length}}
   </div>
+</div>
+<span class="shipment-list-item--created">{{shipment.created_at | date: 'short'}}</span>
+<span class="shipment-list-item--updated">{{shipment.updated_at | date: 'short'}}</span>
+<div class="shipment-list-item--actions">
+  <a class="btn" routerLink="../edit/{{shipment.id}}">edit</a>
+  <button (click)="delete.emit(shipment.id)" class="btn">delete</button>
+  <button (click)="send.emit(shipment.id)" class="btn btn-success"> send</button>
 </div>

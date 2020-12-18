@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IShipment, ShipmentData} from '@core/data';
 import {Observable} from 'rxjs';
 
@@ -9,19 +9,13 @@ import {Observable} from 'rxjs';
 })
 export class ShipmentListPageComponent implements OnInit {
   shipments$: Observable<IShipment[]>;
-  constructor(private _shipment: ShipmentData) { }
+
+  constructor(private _shipment: ShipmentData) {
+  }
 
   ngOnInit(): void {
     this.shipments$ = this._shipment.data$;
-    this._shipment.getAll().then(
-      (value => {
-        console.log(value);
-      })
-    ).catch(
-      reason => {
-        console.log(reason)
-      }
-    )
+    this._shipment.getAll();
   }
 
 }

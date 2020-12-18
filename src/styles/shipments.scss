@@ -1,0 +1,51 @@
+.shipment-list--grid {
+  display: grid;
+  grid-gap: 1rem;
+
+  .shipment-list--title, .shipment-list-item--container {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 2fr 2fr 3fr;
+    align-items: center;
+
+    & > * {
+      padding: .5rem;
+    }
+  }
+
+  .shipment-list--title {
+    & > * {
+      font-weight: 700;
+      color: var(--gray-dark)
+    }
+  }
+
+  .shipment-list-item--container {
+    background-color: var(--white);
+    box-shadow: 0px 2px 4px -2px #0000003b;
+    border-radius: 0.4rem;
+  }
+}
+
+.shipment-list-item--name {
+  width: 20rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.shipment-list-item--items > div {
+  font-weight: 700;
+  padding: 0.4rem;
+  background-color: var(--primary-light-color);
+  display: inline-flex;
+  gap: 0.4rem;
+  border-radius: 0.3rem;
+}
+
+.shipment-list-item--actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.shipment-list-item--created, .shipment-list-item--updated {
+  font-size: 14px;
+}

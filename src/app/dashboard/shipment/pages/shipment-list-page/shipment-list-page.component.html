@@ -1,4 +1,7 @@
-<a routerLink="../create">Add new shipment</a>
+<div class="content-container--header">
+  <h3>Shipment List</h3>
+  <a class="btn btn-success" routerLink="../create">new shipment</a>
+</div>
 <div class="shipment-container">
   <app-shipment-list [shipments]="shipments$ | async"></app-shipment-list>
 </div>
