@@ -37,6 +37,17 @@
     border-color: var(--success);
     color: var(--white)
   }
+  &.btn-danger {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    color: var(--white)
+  }
+
+  &.btn-warn {
+    background-color: var(--warning);
+    border-color: var(--warning);
+    color: var(--white)
+  }
 
   &.btn-hero {
     box-shadow: var(--default-shadow);
