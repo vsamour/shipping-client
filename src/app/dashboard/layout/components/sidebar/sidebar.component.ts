@@ -11,11 +11,9 @@ import {AnimationOptions} from 'ngx-lottie';
 export class SidebarComponent implements OnInit {
   @Input() user: IUser;
   @Output() logout: EventEmitter<void> = new EventEmitter<void>();
-  animationOptions: AnimationOptions = {
-    path: '/assets/animations/shipping.json',
-  };
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

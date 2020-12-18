@@ -37,4 +37,8 @@
     border-color: var(--success);
     color: var(--white)
   }
+
+  &.btn-hero {
+    box-shadow: var(--default-shadow);
+  }
 }

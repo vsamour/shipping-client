@@ -1,7 +1,7 @@
 <div class="shipment-list-item--id"><a class="btn" routerLink="../detail/{{shipment.id}}">#{{shipment.id}}</a></div>
 <div class="shipment-list-item--name">{{shipment.name}}</div>
 <div class="shipment-list-item--items">
-  <div>
+  <div routerLink="../detail/{{shipment.id}}">
     <fa-icon [icon]="boxesIcon"></fa-icon>
     {{shipment.items.length}}
   </div>
