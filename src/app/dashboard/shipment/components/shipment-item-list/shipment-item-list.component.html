@@ -1,0 +1,17 @@
+<div class="shipment-item-list--grid">
+  <div class="shipment-item-list-item" *ngFor="let item of items">
+  <div class="shipment-item--id">
+    {{item.id}}
+  </div>
+  <div class="shipment-item--name">
+    {{item.name}}
+  </div>
+  <div class="shipment-item--code">
+    {{item.code}}
+  </div>
+  <div class="shipment-list-item--actions">
+    <a class="btn btn-warn" routerLink="./item/{{item.id}}/edit">Edit</a>
+    <a class="btn btn-danger" (click)="delete.emit(item.id)" >Delete</a>
+  </div>
+</div>
+</div>

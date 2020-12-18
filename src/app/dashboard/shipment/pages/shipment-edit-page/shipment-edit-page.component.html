@@ -1,14 +1,10 @@
-<button (click)="back()"><</button>
-<form [formGroup]="form" (ngSubmit)="create(form.getRawValue())">
-  <div class="form-group">
-    <label for="shipment-id">ID</label>
-    <input type="number" name="shipment-id" id="shipment-id" formControlName="id" placeholder="#ID">
-  </div>
-  <div class="form-group">
-    <label for="shipment-name">Name</label>
-    <input type="text" name="shipment-id" id="shipment-name" formControlName="name" placeholder="Enter name">
-  </div>
-  <div class="form-group">
-    <button type="submit" [disabled]="form.invalid">Add shipment</button>
-  </div>
-</form>
+<ng-container *ngIf="shipmentId; else createTmp">
+  <h3>Shipment #{{shipmentId}}</h3>
+</ng-container>
+<ng-template #createTmp>
+  <h4>New shipment</h4>
+</ng-template>
+
+<div class="shipment-page--container">
+  <app-shipment-form [shipement]="shipment" (create)="create($event)"></app-shipment-form>
+</div>

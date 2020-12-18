@@ -34,6 +34,11 @@ const routes: Routes = [
     component: ShipmentItemEditPageComponent
   },
   {
+    path: 'detail/:id/item/:itemId/edit',
+    pathMatch: 'prefix',
+    component: ShipmentItemEditPageComponent
+  },
+  {
     path: 'edit/:id',
     pathMatch: 'prefix',
     component: ShipmentEditPageComponent

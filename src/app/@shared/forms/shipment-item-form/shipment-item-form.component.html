@@ -1,23 +1,21 @@
-<p>shipment-item-form works!</p>
-
-<form [formGroup]="form" (ngSubmit)="create.emit(form.getRawValue())">
+<form [formGroup]="form" (ngSubmit)="create.emit(form.getRawValue())" class="form-container">
   <div class="form-group">
     <label for="shipment-item-id">ID</label>
-    <input type="text" id="shipment-item-id" placeholder="id" formControlName="id">
+    <input type="number" id="shipment-item-id" placeholder="id" formControlName="id" class="form-input">
   </div>
   <div class="form-group">
     <label for="shipment-item-id">Shipment ID</label>
-    <input type="text" id="shipment-id" placeholder="shipment id" formControlName="shipment_id">
+    <input type="text" id="shipment-id" placeholder="Shipment id" formControlName="shipment_id" class="form-input">
   </div>
   <div class="form-group">
     <label for="shipment-item-id">Name</label>
-    <input type="text" id="shipment-item-name" placeholder="name" formControlName="name">
+    <input type="text" id="shipment-item-name" placeholder="Name" formControlName="name" class="form-input">
   </div>
   <div class="form-group">
     <label for="shipment-item-id">Code</label>
-    <input type="text" id="shipment-item-code" placeholder="code" formControlName="code">
+    <input type="text" id="shipment-item-code" placeholder="Code" formControlName="code" class="form-input">
   </div>
   <div class="form-group">
-    <button type="submit">CREATE</button>
+    <button type="submit" class="btn btn-success" [class.btn-warn]="itemId">{{itemId ? 'Edit' : 'Create'}}</button>
   </div>
 </form>

@@ -1,44 +1,43 @@
-<h3>Shipment #{{shipment.id}}</h3>
+<div class="content-container--header">
+  <h3>Shipment #{{shipment?.id}}</h3>
+  <div class="shipment-detail--actions">
+    <a class="btn btn-warn" routerLink="/shipment/edit/{{shipment?.id}}">Edit</a>
+    <a class="btn btn-danger" (click)="delete.emit(shipment?.id)">Delete</a>
+    <a class="btn btn-success" (click)="send.emit(shipment?.id)">Send</a>
+  </div>
+</div>
 <div class="shipment-detail--container">
   <div class="shipment-detail--inner">
     <div class="shipment-detail--id">
       <label class="label">ID</label>
-      {{shipment.id}}</div>
+      {{shipment?.id}}</div>
     <div class="shipment-detail--name">
       <label class="label">Name</label>
-      {{shipment.name}}</div>
+      {{shipment?.name}}</div>
     <div class="shipment-detail--created">
       <label class="label">Created At</label>
-      {{shipment.created_at | date: 'short'}}</div>
+      {{shipment?.created_at | date: 'short'}}</div>
     <div class="shipment-detail--updated">
       <label class="label">Updated At</label>
-      {{shipment.updated_at | date: 'short'}}</div>
+      {{shipment?.updated_at | date: 'short'}}</div>
     <div class="shipment-detail--items">
       <label class="label">Items</label>
-      {{shipment.items.length}}</div>
+      {{shipment?.items?.length}}</div>
+
   </div>
   <div class="shipment-item-list--container">
     <div class="shipment-item-list-title">
       <div>ID</div>
       <div>Name</div>
       <div>Code</div>
-      <div>Actions</div>
+      <div></div>
     </div>
-    <div class="shipment-item-list-item" *ngFor="let item of shipment.items">
-      <div class="shipment-item--id">
-        {{item.id}}
-      </div>
-      <div class="shipment-item--name">
-        {{item.name}}
-      </div>
-      <div class="shipment-item--code">
-        {{item.code}}
-      </div>
-      <div class="shipment-item--actions">
+    <ng-container *ngIf="shipment?.items?.length" >
 
-      </div>
-    </div>
-    <div *ngIf="!shipment.items.length">
+        <app-shipment-item-list [items]="shipment.items" (delete)="deleteItem.emit($event)"></app-shipment-item-list>
+    </ng-container>
+
+    <div *ngIf="!shipment?.items.length">
       <div class="shipment-item-list-empty">
         Shipment items not found
       </div>

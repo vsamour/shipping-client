@@ -1,2 +1,4 @@
-<button (click)="back()">< back</button>
-<app-shipment-item-form [shipmentId]="shipmentId" (create)="create($event)"></app-shipment-item-form>
+<div class="shipment-item-edit--container">
+
+  <app-shipment-item-form [item]="item"  [itemId]="itemId" [shipmentId]="shipmentId" (create)="create($event)"></app-shipment-item-form>
+</div>

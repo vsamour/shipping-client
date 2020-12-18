@@ -10,6 +10,7 @@ import {IShipment} from '@core/data';
 export class ShipmentDetailComponent implements OnInit {
   @Input() shipment: IShipment;
   @Output() delete: EventEmitter<string> = new EventEmitter<string>();
+  @Output() deleteItem: EventEmitter<string> = new EventEmitter<string>();
   @Output() send: EventEmitter<string> = new EventEmitter<string>();
   constructor() { }
 

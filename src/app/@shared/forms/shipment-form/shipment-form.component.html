@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="create.emit(form.getRawValue())" class="form-container">
+  <div class="form-group">
+    <label for="shipment-id">ID</label>
+    <input type="number" name="shipment-id" id="shipment-id" formControlName="id" placeholder="#ID" class="form-input">
+  </div>
+  <div class="form-group">
+    <label for="shipment-name">Name</label>
+    <input type="text" name="shipment-id" id="shipment-name" formControlName="name" placeholder="Enter name" class="form-input">
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success" [class.btn-warn]="shipmentId">{{shipmentId ? 'Edit': 'Add'}} shipment</button>
+  </div>
+</form>

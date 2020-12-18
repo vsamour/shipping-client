@@ -12,6 +12,8 @@ import {distinctUntilChanged, tap} from 'rxjs/operators';
 })
 export class ShipmentItemEditPageComponent implements OnInit, OnDestroy {
   shipmentId: string;
+  itemId: string;
+  item: IItem;
   constructor(private _route: ActivatedRoute, private _location: Location, private _item: ItemData) { }
 
   ngOnInit(): void {
@@ -19,8 +21,15 @@ export class ShipmentItemEditPageComponent implements OnInit, OnDestroy {
       untilDestroyed(this),
       distinctUntilChanged(),
       tap((params: ParamMap) => {
-        console.log(params);
         this.shipmentId = params.get('id');
+        this.itemId = params.get('itemId');
+        if (this.itemId) {
+          this._item.getOne(this.itemId).then(
+            (item) => {
+              this.item = item
+            }
+          );
+        }
       })
     ).subscribe()
   }
@@ -33,6 +42,6 @@ export class ShipmentItemEditPageComponent implements OnInit, OnDestroy {
   }
 
   create(item: IItem) {
-    this._item.createOne(item);
+    this._item.createOne(item).then(() => this.back());
   }
 }
