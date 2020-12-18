@@ -1,6 +1,52 @@
-<pre>
-  {{shipment | json}}
-</pre>
-<button (click)="delete.emit(shipment.id)">delete</button>
-<button (click)="send.emit(shipment.id)">send</button>
-<a routerLink="./item/create">create</a>
+<h4>Shipment #{{shipment.id}}</h4>
+
+<div class="shipment-detail--container">
+  <div class="shipment-detail--inner">
+    <div class="shipment-detail--id">
+      <label class="label">ID</label>
+      {{shipment.id}}</div>
+    <div class="shipment-detail--name">
+      <label class="label">Name</label>
+      {{shipment.name}}</div>
+    <div class="shipment-detail--created">
+      <label class="label">Created At</label>
+      {{shipment.created_at | date: 'short'}}</div>
+    <div class="shipment-detail--updated">
+      <label class="label">Updated At</label>
+      {{shipment.updated_at | date: 'short'}}</div>
+    <div class="shipment-detail--items">
+      <label class="label">Items</label>
+      {{shipment.items.length}}</div>
+  </div>
+  <div class="shipment-item-list--container">
+    <div class="shipment-item-list-title">
+      <div>ID</div>
+      <div>Name</div>
+      <div>Code</div>
+      <div>Actions</div>
+    </div>
+    <div class="shipment-item-list-item" *ngFor="let item of shipment.items">
+      <div class="shipment-item--id">
+        {{item.id}}
+      </div>
+      <div class="shipment-item--name">
+        {{item.name}}
+      </div>
+      <div class="shipment-item--code">
+        {{item.code}}
+      </div>
+      <div class="shipment-item--actions">
+
+      </div>
+    </div>
+    <div *ngIf="!shipment.items.length">
+      <div class="shipment-item-list-empty">
+        Shipment items not found
+      </div>
+    </div>
+    <a class="btn btn-success text-center" routerLink="./item/create">
+     new item
+    </a>
+  </div>
+</div>
+
